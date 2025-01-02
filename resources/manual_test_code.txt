@@ -1,0 +1,112 @@
+Manual test code below. Put this code in main() when you are ready to test your full lab
+
+    // Initialize chessboard
+    Chess::initializeBoard();
+
+    //Test print board
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing print empty board" << std::endl;
+    std::cout << "Expectation: Should see empty chess board." << std::endl << std::endl;
+    Chess::printBoard();
+    
+
+    // Test creating pawns
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing creating pawns" << std::endl;
+    std::cout << "Expectation: Should see 8 black pawns (p) on row 7 and 8 white pawns (P) on row 2." << std::endl << std::endl;
+    WhitePawn P1('a', 2);
+    WhitePawn P2('b', 2);
+    WhitePawn P3('c', 2);
+    WhitePawn P4('d', 2);
+    WhitePawn P5('e', 2);
+    WhitePawn P6('f', 2);
+    WhitePawn P7('g', 2);
+    WhitePawn P8('h', 2);
+    BlackPawn p1('a', 7);
+    BlackPawn p2('b', 7);
+    BlackPawn p3('c', 7);
+    BlackPawn p4('d', 7);
+    BlackPawn p5('e', 7);
+    BlackPawn p6('f', 7);
+    BlackPawn p7('g', 7);
+    BlackPawn p8('h', 7);
+    Chess::printBoard();
+    
+
+    // Test move forward 2
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing moving forward 2" << std::endl;
+    std::cout << "Expectation: Should see 4 pawns on left side of board move forward 2." << std::endl << std::endl;
+
+    P1.move('a', 4);
+    p1.move('a', 5);
+    P2.move('b', 4);
+    p2.move('b', 5);
+    Chess::printBoard();
+    
+    // Test capturing opponent pawn
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing capturing opponent pawn" << std::endl;
+    std::cout << "Expectation: Should see white pawn (P) in b5 and black pawn (p) in b4 (each side captured one pawn)." << std::endl << std::endl;
+
+    P1.move('b', 5);
+    p1.move('b', 4);
+    Chess::printBoard();
+
+    // Test move forward 1
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing move forward 1" << std::endl;
+    std::cout << "Expectation: Should see white pawn (P) in b6 and black pawn (p) in b3 (each moved forward 1)." << std::endl << std::endl;
+
+    P1.move('b', 6);
+    p1.move('b', 3);
+    Chess::printBoard();
+
+    // Test move forward two after first move
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing move forward 2 after first try (should not work)" << std::endl;
+    std::cout << "Expectation: No movement. P should still be in b6 and p in b3." << std::endl << std::endl;
+
+    P1.move('b', 8);
+    p1.move('b', 1);
+    Chess::printBoard();
+
+    // Test move forward more than two
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing move forward more than two (should not work)" << std::endl;
+    std::cout << "Expectation: No movement. P should still be in b6 and p in b3." << std::endl << std::endl;
+
+    P3.move('c', 5);
+    p4.move('d', 4);
+    Chess::printBoard();
+
+    // Test move backward
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing moving backward(should not work)" << std::endl;
+    std::cout << "Expectation: No movement. P should still be in b6 and p in b3." << std::endl << std::endl;
+
+    P1.move('b', 5);
+    p2.move('b', 2);
+    Chess::printBoard();
+
+    // Test moving left or right
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing moving left or right (should not work)" << std::endl;
+    std::cout << "Expectation: No movement. P should still be in b6 and p in b3." << std::endl << std::endl;
+
+    P1.move('a', 6);
+    p2.move('c', 3);
+    Chess::printBoard();
+
+    // Test moving past end of board
+    std::cout << "=========================================================================" << std::endl;
+    std::cout << "Testing moving past end of board (move pawns one space at a time)" << std::endl;
+    std::cout << "Expectation: P should have moved to b8 and stopped and p should have moved to b1 and stopped." << std::endl << std::endl;
+
+    P1.move('b', 7);
+    P1.move('b', 8);
+    P1.move('b', 9);
+    p1.move('b', 2);
+    p1.move('b', 1);
+    p1.move('b', 0);
+    Chess::printBoard();

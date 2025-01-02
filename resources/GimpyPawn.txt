@@ -1,0 +1,22 @@
+bool GimpyPawn::isMoveLegal(char newFile, int newRank)
+{
+    // All moves off the game board are illegal
+    if ((newFile < 'a')
+        || (newFile > 'h')
+        || (newRank < 1)
+        || (newRank > 8))
+    {
+        return false;
+    }
+    
+    // Move up one is legal
+    if ((newFile == file) // does not change file
+        && (newRank == rank - 1) // moves forward 1
+        && !Chess::chessboard[newRank - 1][newFile - 'a'].isOccupied()) // destination not occupied
+    {
+        return true;
+    }
+
+    // Otherwise move is illegal
+    return false;
+}

@@ -1,0 +1,124 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile Application",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-g",
+        "${workspaceFolder}/app/main.cpp",  // Specify the path to main.cpp
+        "${workspaceFolder}/src/*.cpp",  // Compile all cpp files in src/
+        "-o",
+        "${workspaceFolder}/build/app.out",  // Output executable for the application
+        "-I${workspaceFolder}/include"  // Add include directory to search path
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": false
+      }
+    },
+    {
+      "label": "Compile Tests",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-g",
+        "-DLAB=${input:Lab_Number}", // Specify LAB macro value for conditional compilation of unit tests
+        "${workspaceFolder}/test/*.cpp",  // Compile all cpp files in test/
+        "${workspaceFolder}/src/*.cpp",  // Compile all cpp files in src/
+        "-o",
+        "${workspaceFolder}/build/test.out",  // Output executable for the tests
+        "-I${workspaceFolder}/include",  // Add include directory to search path
+        "-I${workspaceFolder}/test"  // Include the test directory itself
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": {
+        "owner": "cpp",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      }
+    },
+    {
+      "label": "Run Tests",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/test.out",
+      "args": [
+        "--no-breaks",
+        "--success"
+      ],
+      "dependsOn": [
+        "Compile Tests"
+      ],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": false
+      }
+    },
+    {
+      "label": "Refresh Test Code from Template",
+      "type": "shell",
+      "command": "git remote get-url upstream || git remote add upstream https://github.com/SOCC-CS162/Chess-Project-Template.git && git fetch upstream && git checkout upstream/main -- test/",
+      "group": "none",
+      "presentation": {
+          "reveal": "always",
+          "panel": "new"
+      },
+      "problemMatcher": []
+    },
+  {
+      "label": "Refresh IDE Configurations from Template",
+      "type": "shell",
+      "command": "git fetch upstream && git checkout upstream/main -- .devcontainer .vscode",
+      "group": "none",
+      "presentation": {
+          "reveal": "always",
+          "panel": "new"
+      },
+      "problemMatcher": []
+}
+],
+"inputs": [
+	{
+		"id": "Lab_Number",
+		"type": "command",
+		"command": "statusBarParam.get.Lab_Number",
+		"args": [
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9"
+		]
+	}
+]
+}

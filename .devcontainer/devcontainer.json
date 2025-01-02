@@ -1,0 +1,18 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/cpp",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vsliveshare.vsliveshare",
+        "matepek.vscode-catch2-test-adapter",
+        "SanaAjani.taskrunnercode",
+        "mschababerle.status-bar-param",
+        "ms-vscode.cpptools-extension-pack"
+      ]
+    }
+  },
+  "postCreateCommand": [
+    "git config --global pull.rebase false",
+    "git remote add upstream https://github.com/SOCC-CS162/Chess-Project-Template.git"
+  ]
+}
