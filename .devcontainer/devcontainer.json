@@ -1,18 +1,77 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/cpp",
+  "name": "C++ Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/cpp:debian",
+
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  },
+
   "customizations": {
     "vscode": {
       "extensions": [
+        "formulahendry.code-runner",
+        "spencerwmiles.vscode-task-buttons",
+        "ms-vscode.cpptools-extension-pack",
         "ms-vsliveshare.vsliveshare",
-        "matepek.vscode-catch2-test-adapter",
-        "SanaAjani.taskrunnercode",
-        "mschababerle.status-bar-param",
-        "ms-vscode.cpptools-extension-pack"
-      ]
+        "matepek.vscode-catch2-test-adapter"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+        "[cpp]": {
+          "editor.defaultFormatter": "ms-vscode.cpptools"
+        },
+        "C_Cpp.formatting": "default",
+        "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 4 }",
+        "prettier.requireConfig": false,
+        "prettier.useEditorConfig": false,
+        "code-runner.showRunIconInEditorTitleMenu": true,
+
+        "code-runner.executorMapByGlob": {
+          "*.cpp": "cd $workspaceRoot && mkdir -p build && g++ -std=c++17 -g $workspaceRoot/app/main.cpp $workspaceRoot/src/*.cpp -o $workspaceRoot/build/app.out -I$workspaceRoot/include && $workspaceRoot/build/app.out"
+        },
+        "code-runner.executorMap": {
+          "cpp": "cd $workspaceRoot && mkdir -p build && g++ -std=c++17 -g $workspaceRoot/app/main.cpp $workspaceRoot/src/*.cpp -o $workspaceRoot/build/app.out -I$workspaceRoot/include && $workspaceRoot/build/app.out"
+        },
+        "code-runner.defaultLanguage": "cpp",
+        "code-runner.saveAllFilesBeforeRun": true,
+        "code-runner.saveFileBeforeRun": true,
+        "code-runner.preserveFocus": true,
+        "code-runner.clearPreviousOutput": true,
+        "code-runner.runInTerminal": true,
+        "code-runner.ignoreSelection": true,
+        "editor.defaultRunner": "formulahendry.code-runner",
+        "VsCodeTaskButtons.showCounter": true,
+        "VsCodeTaskButtons.tasks": [
+          {
+            "label": "$(play) Build & Run",
+            "task": "Build & Run",
+            "tooltip": "Build and run current file",
+            "dependsOn": ["Format Code"]
+          },
+          {
+            "label": "$(beaker) Run Tests",
+            "task": "Run Tests",
+            "tooltip": "Run all tests"
+          }
+        ],
+        "debug.javascript.autoAttachFilter": "disabled",
+        "debug.allowBreakpointsEverywhere": true,
+        "debug.toolBarLocation": "floating",
+        "debug.showInStatusBar": "always",
+        "debug.inlineValues": "auto",
+        "debug.hideLaunchConfigurations": ["Run C/C++ File"]
+      }
     }
   },
-  "postCreateCommand": [
-    "git config --global pull.rebase false",
-    "git remote add upstream https://github.com/SOCC-CS162/Chess-Project-Template.git"
-  ]
+
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.vscode/extensions,target=/root/.vscode-server/extensions,type=bind,consistency=cached"
+  ],
+
+  "postCreateCommand": "./.devcontainer/setup-git.sh"
 }

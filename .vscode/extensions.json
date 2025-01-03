@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "formulahendry.code-runner",
+                "spencerwmiles.vscode-task-buttons",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vsliveshare.vsliveshare",
+                "matepek.vscode-catch2-test-adapter"
+    ]
+} 

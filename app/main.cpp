@@ -1,16 +1,9 @@
-
-#include "Square.h"
-#include "Chess.h"
-#include "BlackPawn.h"
-#include "WhitePawn.h"
 #include <iostream>
 
+#include "HelloWorld.h"
 
-int main()
-{
-   
+int main() {
+    HelloWorld hello;
+    std::cout << hello.sayHello() << std::endl;
+    return 0;
 }
-
-
-
-

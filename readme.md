@@ -1,6 +1,6 @@
 # CS-162 Chess Lab
 
-Welcome to the CS-162 Chess Lab! This repository is set up to work with GitHub Codespaces, providing you with a powerful, customizable, and scalable cloud development environment.
+Welcome to the CS-260 Project Tempalte. This repository is set up to work with GitHub Codespaces, providing you with a powerful, customizable, and scalable cloud development environment.
 
 ## Repository Structure
 
