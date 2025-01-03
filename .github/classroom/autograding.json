@@ -2,10 +2,10 @@
   "tests": [
     {
       "name": "Run Tests",
-      "setup": "",
-      "run": "./build/test_runner_xml",
+      "setup": "mkdir -p build && g++ -std=c++17 -g test/unit_tests.cpp src/*.cpp -o build/test.out -I${GITHUB_WORKSPACE}/include -I${GITHUB_WORKSPACE}/test",
+      "run": "./build/test.out --no-breaks --success",
       "input": "",
-      "output": "TEST SUMMARY",
+      "output": "[doctest] test cases:",
       "comparison": "included",
       "timeout": 10,
       "points": null
