@@ -1,10 +1,11 @@
-# CS-162 Chess Lab
+# CS-260 Project Template
 
 Welcome to the CS-260 Project Tempalte. This repository is set up to work with GitHub Codespaces, providing you with a powerful, customizable, and scalable cloud development environment.
 
 ## Repository Structure
 
 - `.devcontainer`: Contains the configuration files that specify the operating system and other configurations for the virtual machine (docker contaier if you know what that is) that VS Code is running in on the cloud. You shoud never need to modify files in this directory.
+- `.github`: Contains GitHub-specific configurations including workflows for automated testing and grading. The `classroom` directory contains autograding settings, and the `workflows` directory defines how tests are run on GitHub. You should never need to modify files in this directory.
 - `.vscode`: Contains the configurations for VS Code itself. The `launch.json` and `tasks.json` files tell VS Code what to do when you click the "play"/launch button. You should never need to modify files in this directory.
 - `app/`: Contains the `main.cpp` file, which is where you will put the code for your app (except for the class files).
 - `build/`: This directory will contain the executable files (aka binaries) and any intermediate files created by the compiler (e.g. object .obj files). The executables (.out) files are the fully compiled programs you can run on your computer. The ones here are specifically compiled to run on linux, which is what the codespaces environment is running in. You should not need to modify the files in this directory.
@@ -18,8 +19,8 @@ Welcome to the CS-260 Project Tempalte. This repository is set up to work with G
 Here's how to get started:
 
 1. **Open Your Codespace**: Navigate to the main page of this GitHub repository and click on the green Code button. Select Open with Codespaces and then New codespace.
-2. **Build and Run the App**: Use the `Run and Debug` feature in the sidebar, select `Build & Run App (CS 162)` from the dropdown at the top, and then click the green play button to compile and run the main application.
-3. **Run Unit Tests**: Similarly, select `Run Unit Tests (CS 162)` from the dropdown and click the green play button to execute the unit tests.
+2. **Build and Run the App**: Use the `Run and Debug` feature in the sidebar, select `Build & Run App (CS 260)` from the dropdown at the top, and then click the green play button to compile and run the main application. Alternatively you can us the `Build & Run` button in the taskbar at the bottom of the screen.
+3. **Run Unit Tests**: Similarly, select `Run Unit Tests (CS 260)` from the dropdown and click the green play button to execute the unit tests. Alternatively you can us the `Run Tests` button in the taskbar at the bottom of the screen. You can use the Testing tab in the sidebar to see the results of the tests.
 4. If you want to run your codespace locally, it's easy! Check out [these instructions](https://docs.github.com/en/codespaces/developing-in-a-codespace/using-github-codespaces-in-visual-studio-code).
 
 ## Working on the Lab

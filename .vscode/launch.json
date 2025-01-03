@@ -3,7 +3,7 @@
     "configurations": [
 
         {
-            "name": "(CS 162) Build & Run App",
+            "name": "(CS 260) Build & Run App",
             "type": "cppdbg",
             "request": "launch",
             "args": [],
@@ -24,11 +24,11 @@
         },
 
         {
-            "name": "(CS 162) Run Unit Tests",
+            "name": "(CS 260) Run Unit Tests",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/test.out",
-            "args": [],
+            "args": ["--no-breaks", "--success"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/test",
             "environment": [],
