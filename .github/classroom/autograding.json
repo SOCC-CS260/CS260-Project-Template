@@ -2,7 +2,7 @@
   "tests": [
     {
       "name": "Run Tests",
-      "setup": "mkdir -p build && g++ -std=c++17 -g test/unit_tests.cpp src/*.cpp -o build/test.out -I${GITHUB_WORKSPACE}/include -I${GITHUB_WORKSPACE}/test",
+      "setup": "mkdir -p build && g++ -std=c++17 -g test/unit_tests.cpp src/*.cpp -o build/test.out -Iinclude -Itest",
       "run": "./build/test.out --no-breaks --success",
       "input": "",
       "output": "[doctest] test cases:",
